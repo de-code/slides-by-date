@@ -1,0 +1,231 @@
+/* @theme slides */
+
+section {
+  --accent: #0d9488;
+  --accent-bg: #f0fdf4;
+  --accent-dark: #134e4a;
+  --code-bg: var(--accent-bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 2.1rem;
+  padding: 60px 72px;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5em;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.2em;
+}
+
+strong {
+  color: var(--accent);
+}
+
+ol {
+  padding-left: 1.4em;
+  margin-top: 0.3em;
+}
+
+ol li {
+  margin-bottom: 0.4em;
+}
+
+section.title {
+  background: #18181b;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section.title h1 {
+  font-size: 3.6rem;
+  color: #ffffff;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.3em;
+}
+
+section.title p {
+  color: #a1a1aa;
+  font-size: 1.55rem;
+  margin-top: 0.6em;
+}
+
+section.dark {
+  background: #18181b;
+  color: #ffffff;
+}
+
+section.dark h1 {
+  color: #ffffff;
+  border-bottom-color: var(--accent);
+}
+
+section.dark blockquote {
+  background: #27272a;
+  border-left-color: var(--accent);
+  color: #e4e4e7;
+}
+
+section.dark p {
+  color: #d4d4d8;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 1em 1.3em;
+  border-radius: 8px;
+  font-size: 1.55rem;
+  line-height: 1.5;
+}
+
+code {
+  background: var(--code-bg);
+  color: var(--accent);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-size: 1.35rem;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent);
+  background: var(--accent-bg);
+  padding: 0.6em 1em;
+  margin: 0.4em 0;
+  color: var(--accent-dark);
+  font-style: normal;
+  font-size: 1.7rem;
+}
+
+table {
+  font-size: 1.65rem;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 0.5em;
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.35em 0.7em;
+  border-bottom: 2px solid #d4d4d8;
+  background: #f4f4f5;
+}
+
+td {
+  padding: 0.35em 0.7em;
+  border-bottom: 1px solid #e4e4e7;
+  vertical-align: top;
+}
+
+section.wide-first td:first-child,
+section.wide-first th:first-child {
+  width: 62%;
+}
+
+section.narrow-first td:first-child,
+section.narrow-first th:first-child {
+  width: 18%;
+}
+
+.note {
+  font-size: 1.2rem;
+  color: #71717a;
+  margin-top: 1em;
+}
+
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  margin-top: 2em;
+}
+
+.flow-box {
+  background: var(--accent-bg);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.45em 0.9em;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+.flow-cmd {
+  background: #1e1e2e;
+  color: #93c5fd;
+  border-color: #3b82f6;
+  font-family: monospace;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.flow-labeled {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.6em;
+  margin-top: 1.8em;
+}
+
+.flow-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.flow-col-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+  padding-top: 0.35em;
+}
+
+.flow-label {
+  height: 3em;
+  font-size: 1.15rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.flow-spacer {
+  height: 3em;
+}
+
+section > :first-child {
+  margin-top: 0 !important;
+}
+
+section > :last-child {
+  margin-bottom: 0;
+}
+
+section[data-marpit-pagination]::after {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+}

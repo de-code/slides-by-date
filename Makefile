@@ -3,10 +3,18 @@ CHROME_BIN := $(shell ls $(HOME)/.cache/puppeteer/chrome/*/chrome-linux64/chrome
 SLIDES := $(patsubst %/,%,$(sort $(dir $(wildcard 2*-*/slides.md))))
 OUT := output
 
-.PHONY: install all-pdf $(SLIDES:%=%.pdf) $(SLIDES:%=%.html) $(SLIDES:%=%.pptx)
+.PHONY: install vscode all-pdf $(SLIDES:%=%.pdf) $(SLIDES:%=%.html) $(SLIDES:%=%.pptx)
 
-install:
+install: node_modules vscode
+
+node_modules:
 	npm install
+
+vscode:
+	mkdir -p .vscode
+	@( [ -f .vscode/settings.json ] && cat .vscode/settings.json || echo '{}' ) | \
+	  jq '."markdown.marp.themes" = ["./themes/slides.css"]' > .vscode/settings.json.tmp
+	mv .vscode/settings.json.tmp .vscode/settings.json
 
 all-pdf: $(SLIDES:%=%.pdf)
 
