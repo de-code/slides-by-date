@@ -15,7 +15,7 @@ Daniel Ecer &nbsp;·&nbsp; 19 May 2026
 
 # You have seen this before.
 
-<!-- Insert screenshot: Chrome "Install Sciety Labs" prompt in the address bar -->
+![width:500px](images/screenshot-add-home-screen.jpeg)
 
 Chrome, Edge, and mobile browsers show an install prompt when a site provides a web manifest with a name and `start_url`.
 
@@ -100,6 +100,8 @@ The user sees your page instead of a browser error.
 **iOS**: Safari does not fire `beforeinstallprompt`. A separate instruction banner is needed: "tap Share, then Add to Home Screen."
 
 **Richer manifest**: adding `description` and `screenshots` upgrades the Chrome Android dialog from a mini-infobar to a fuller install sheet.
+
+**App stores**: the same manifest enables Google Play and Microsoft Store distribution via [PWABuilder](https://www.pwabuilder.com/). Apple App Store carries policy risk for content platforms.
 
 <!-- Sources: web.dev/articles/promote-install, WebKit/standards-positions issue 619 ("browser-initiated UI has very low engagement" — WebKit's own data). -->
 
