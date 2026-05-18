@@ -65,6 +65,11 @@ section.dark h1 {
   border-bottom-color: var(--accent);
 }
 
+section.dark code {
+  background: #3f3f46;
+  color: #5eead4;
+}
+
 section.dark blockquote {
   background: #27272a;
   border-left-color: var(--accent);
