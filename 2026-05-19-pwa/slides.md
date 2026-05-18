@@ -15,7 +15,7 @@ Daniel Ecer &nbsp;·&nbsp; 19 May 2026
 
 # You may have seen this before.
 
-<div class="flow" style="margin: 1.5em 0; justify-content: flex-start;">
+<div class="screenshots">
   <img src="images/screenshot-add-home-screen.jpeg" height="100">
   <div class="flow-arrow">→</div>
   <img src="images/screenshot-sciety-labs-home-screen-icon.jpeg" height="100">

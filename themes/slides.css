@@ -178,6 +178,15 @@ section.grid-table td:first-child {
   margin-top: 2em;
 }
 
+.screenshots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 3em;
+  margin-bottom: 3.5em;
+}
+
 .flow-box {
   background: var(--accent-bg);
   border: 2px solid var(--accent);
