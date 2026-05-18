@@ -38,7 +38,7 @@ The browser handles distribution. No app store account, no review process.
 
 Users no longer need to recall a URL. The icon on the home screen is enough to bring them back.
 
-<!-- Source: [Rakuten 24 case study](https://web.dev/case-studies/rakuten-24) — e-commerce context, so the absolute numbers won't transfer directly, but the direction is consistent across published case studies. -->
+<!-- Source: [Rakuten 24 case study](https://web.dev/case-studies/rakuten-24). E-commerce context, so the absolute numbers won't transfer directly, but the direction is consistent across published case studies. -->
 
 ---
 
@@ -107,7 +107,7 @@ The user sees your page instead of a browser error.
 
 **App stores**: the same manifest enables Google Play and Microsoft Store distribution via [PWABuilder](https://www.pwabuilder.com/). Apple App Store carries [policy risk](https://developer.apple.com/app-store/review/guidelines/#minimum-functionality) for content platforms.
 
-<!-- Sources: [Patterns for promoting PWA installation](https://web.dev/articles/promote-install), [WebKit standards-positions issue 619](https://github.com/WebKit/standards-positions/issues/619) ("browser-initiated UI has very low engagement" — WebKit's own data). -->
+<!-- Sources: [Patterns for promoting PWA installation](https://web.dev/articles/promote-install), [WebKit standards-positions issue 619](https://github.com/WebKit/standards-positions/issues/619) ("browser-initiated UI has very low engagement", WebKit's own data). -->
 
 ---
 
