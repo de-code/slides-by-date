@@ -107,13 +107,11 @@ The user sees your page instead of a browser error.
 
 ---
 
-# Where this is worth adding.
+# Where this might be worth adding.
 
-**elifesciences.org**: readers who return regularly can install the site and read cached articles offline.
+**elifesciences.org**: readers who return regularly to read articles.
 
-**sciety.org**: users tracking paper lists benefit from an install shortcut and an offline fallback.
-
-The install prompt alone requires no backend changes.
+**sciety.org**: users checking the latest papers reviewed by a group.
 
 ---
 
