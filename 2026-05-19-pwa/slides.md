@@ -19,6 +19,8 @@ Daniel Ecer &nbsp;·&nbsp; 19 May 2026
   <img src="images/screenshot-add-home-screen.jpeg" height="100">
   <div class="flow-arrow">→</div>
   <img src="images/screenshot-sciety-labs-home-screen-icon.jpeg" height="100">
+  <div class="flow-arrow">→</div>
+  <img src="images/screenshot-app-top.jpeg" height="100">
 </div>
 
 The browser handles distribution. No app store account, no review process.
