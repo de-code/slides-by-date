@@ -13,7 +13,7 @@ Daniel Ecer &nbsp;·&nbsp; 19 May 2026
 
 ---
 
-# You have seen this before.
+# You may have seen this before.
 
 ![width:500px](images/screenshot-add-home-screen.jpeg)
 
