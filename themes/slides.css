@@ -140,6 +140,25 @@ section.narrow-first th:first-child {
   width: 18%;
 }
 
+section.grid-table table {
+  font-size: 1.05rem;
+}
+
+section.grid-table th,
+section.grid-table td {
+  padding: 0.28em 0.55em;
+  border: 1px solid #d4d4d8;
+  text-align: center;
+}
+
+section.grid-table th:first-child,
+section.grid-table td:first-child {
+  text-align: left;
+  width: 22%;
+  font-weight: 600;
+  background: #f4f4f5;
+}
+
 .note {
   font-size: 1.2rem;
   color: #71717a;
