@@ -31,9 +31,8 @@ Rakuten 24 tracked users who installed their PWA against those who did not, over
 
 - **310%** more visit frequency
 - **450%** higher retention rate
-- **150%** more sales per customer
 
-The mechanism: a home screen icon is a passive re-engagement nudge on every device unlock. Users no longer need to recall a URL.
+Users no longer need to recall a URL. The icon on the home screen is enough to bring them back.
 
 <!-- Source: web.dev/case-studies/rakuten-24 — e-commerce context, so the absolute numbers won't transfer directly, but the direction is consistent across published case studies. -->
 
@@ -64,7 +63,8 @@ The mechanism: a home screen icon is a passive re-engagement nudge on every devi
 - Standalone window: no address bar, no browser tabs
 - Theme colour in the OS title bar and Android task switcher
 - App icon on the home screen or taskbar
-- Works with an existing site, no changes to routing or templates
+
+<!-- Works with an existing site, no changes to routing or templates beyond the manifest. -->
 
 <!-- demo: show the installed Sciety Labs window, or show a screenshot side by side with the browser version -->
 
@@ -72,7 +72,7 @@ The mechanism: a home screen icon is a passive re-engagement nudge on every devi
 
 # Offline support: a separate step.
 
-The strategy per resource type is a choice.
+The user sees your page instead of a browser error.
 
 | Resource | Strategy | Behaviour |
 |---|---|---|
@@ -89,21 +89,19 @@ The strategy per resource type is a choice.
 
 **Badging API**: show an unread count on the installed app icon, the way a native app would.
 
-**Share target**: the installed app appears in the OS share sheet alongside native apps.
-
-<!-- Each of these is a separate API with its own browser support profile. Push notifications have broad support; the Badging API and Share Target are primarily Chrome and Edge on desktop and Android. -->
+<!-- Each of these is a separate API with its own browser support profile. Push notifications have broad support; the Badging API is primarily Chrome and Edge on desktop and Android. -->
 
 ---
 
 # Going further.
 
-**Custom install prompt**: the browser's passive mini-infobar has very low engagement. Handling the `beforeinstallprompt` event in JavaScript lets you show a prompt at the right moment.
+**Custom install prompt**: the browser's passive mini-infobar has a low acceptance rate. Handling the `beforeinstallprompt` event lets you show a prompt at the right moment.
 
 **iOS**: Safari does not fire `beforeinstallprompt`. A separate instruction banner is needed: "tap Share, then Add to Home Screen."
 
 **Richer manifest**: adding `description` and `screenshots` upgrades the Chrome Android dialog from a mini-infobar to a fuller install sheet.
 
-<!-- Sources: web.dev/articles/promote-install, WebKit/standards-positions issue 619 (WebKit's own data: "browser-initiated UI has very low engagement"). -->
+<!-- Sources: web.dev/articles/promote-install, WebKit/standards-positions issue 619 ("browser-initiated UI has very low engagement" — WebKit's own data). -->
 
 ---
 
@@ -122,5 +120,5 @@ The install prompt alone requires no backend changes.
 # The manifest is the starting point.
 
 - Add `site.webmanifest` with a name and `start_url`
-- The install prompt appears automatically
+- The browser shows the install prompt
 - Add a service worker when you want offline support
