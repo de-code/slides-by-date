@@ -23,6 +23,7 @@ $(SLIDES:%=%.pdf): %.pdf: %/slides.md | $(OUT)
 
 $(SLIDES:%=%.html): %.html: %/slides.md | $(OUT)
 	$(MARP) $< --output $(OUT)/$@ --allow-local-files
+	@[ -d "$*/images" ] && cp -r "$*/images" $(OUT)/ || true
 
 $(SLIDES:%=%.pptx): %.pptx: %/slides.md | $(OUT)
 	CHROME_NO_SANDBOX=1 $(MARP) $< --output $(OUT)/$@ --browser-path $(CHROME_BIN) --allow-local-files
