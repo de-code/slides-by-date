@@ -15,13 +15,15 @@ Daniel Ecer &nbsp;·&nbsp; 19 May 2026
 
 # You may have seen this before.
 
-![width:500px](images/screenshot-add-home-screen.jpeg)
-
-Chrome, Edge, and mobile browsers show an install prompt when a site provides a web manifest with a name and `start_url`.
+<div class="flow" style="margin: 1.5em 0; justify-content: flex-start;">
+  <img src="images/screenshot-add-home-screen.jpeg" height="100">
+  <div class="flow-arrow">→</div>
+  <img src="images/screenshot-sciety-labs-home-screen-icon.jpeg" height="100">
+</div>
 
 The browser handles distribution. No app store account, no review process.
 
-<!-- The prompt appears automatically. The user clicks once, and the site gets a home screen icon and its own window. -->
+<!-- Chrome, Edge, and mobile browsers show the prompt when a site provides a web manifest with a name and start_url. The user clicks once, and the site gets a home screen icon and its own window. -->
 
 ---
 
