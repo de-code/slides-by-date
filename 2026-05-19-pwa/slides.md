@@ -27,14 +27,14 @@ The browser handles distribution. No app store account, no review process.
 
 # Why home screen presence matters.
 
-Rakuten 24 tracked users who installed their PWA against those who did not, over one month:
+[Rakuten 24](https://web.dev/case-studies/rakuten-24) tracked users who installed their PWA against those who did not, over one month:
 
 - **310%** more visit frequency
 - **450%** higher retention rate
 
 Users no longer need to recall a URL. The icon on the home screen is enough to bring them back.
 
-<!-- Source: web.dev/case-studies/rakuten-24 — e-commerce context, so the absolute numbers won't transfer directly, but the direction is consistent across published case studies. -->
+<!-- Source: [Rakuten 24 case study](https://web.dev/case-studies/rakuten-24) — e-commerce context, so the absolute numbers won't transfer directly, but the direction is consistent across published case studies. -->
 
 ---
 
@@ -95,15 +95,15 @@ The user sees your page instead of a browser error.
 
 # Going further.
 
-**Custom install prompt**: the browser's passive mini-infobar has a low acceptance rate. Handling the `beforeinstallprompt` event lets you show a prompt at the right moment.
+**Custom install prompt**: the browser's passive mini-infobar has a [low acceptance rate](https://github.com/WebKit/standards-positions/issues/619). Handling the `beforeinstallprompt` event lets you show a prompt at the right moment.
 
 **iOS**: Safari does not fire `beforeinstallprompt`. A separate instruction banner is needed: "tap Share, then Add to Home Screen."
 
 **Richer manifest**: adding `description` and `screenshots` upgrades the Chrome Android dialog from a mini-infobar to a fuller install sheet.
 
-**App stores**: the same manifest enables Google Play and Microsoft Store distribution via [PWABuilder](https://www.pwabuilder.com/). Apple App Store carries policy risk for content platforms.
+**App stores**: the same manifest enables Google Play and Microsoft Store distribution via [PWABuilder](https://www.pwabuilder.com/). Apple App Store carries [policy risk](https://developer.apple.com/app-store/review/guidelines/#minimum-functionality) for content platforms.
 
-<!-- Sources: web.dev/articles/promote-install, WebKit/standards-positions issue 619 ("browser-initiated UI has very low engagement" — WebKit's own data). -->
+<!-- Sources: [Patterns for promoting PWA installation](https://web.dev/articles/promote-install), [WebKit standards-positions issue 619](https://github.com/WebKit/standards-positions/issues/619) ("browser-initiated UI has very low engagement" — WebKit's own data). -->
 
 ---
 
