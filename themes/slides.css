@@ -65,6 +65,11 @@ section.dark h1 {
   border-bottom-color: var(--accent);
 }
 
+section.dark code {
+  background: #3f3f46;
+  color: #5eead4;
+}
+
 section.dark blockquote {
   background: #27272a;
   border-left-color: var(--accent);
@@ -171,6 +176,15 @@ section.grid-table td:first-child {
   justify-content: center;
   gap: 0.6em;
   margin-top: 2em;
+}
+
+.screenshots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 3em;
+  margin-bottom: 3.5em;
 }
 
 .flow-box {
