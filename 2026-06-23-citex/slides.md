@@ -32,7 +32,6 @@ Daniel Ecer &nbsp;·&nbsp; 23 June 2026
 Most citation data was proprietary until around 2017.
 
 - **2017:** around 1% of citation data was openly available
-- **Now:** around 40%
 - **June 2022:** Crossref committed to treating all deposited references as CC0
 
 The **[Barcelona Declaration on Open Research Information](https://barcelona-declaration.org/)** calls on institutions to treat research information as a public good. Supporters include OpenCitations, Crossref, OpenAlex, and eLife.
