@@ -79,7 +79,7 @@ One talk showed a full pipeline: OCR, then a large LLM for extraction, then a fi
 
 <p class="note">Philipp Mayr, GESIS</p>
 
-Matching that string to an actual paper runs into:
+Matching a reference string to an actual paper runs into:
 
 - No DOI for large parts of SSH and humanities literature
 - Book chapters under-indexed in major databases
@@ -93,7 +93,7 @@ Matching that string to an actual paper runs into:
 
 <!-- _class: dark -->
 
-# What I took away
+# Summary
 
 - Open citation data is expanding; the Barcelona Declaration marks a shift in what institutions are expected to make open
 - The field is converging on hybrid approaches: GROBID for STEM, LLMs for SSH and multilingual text
