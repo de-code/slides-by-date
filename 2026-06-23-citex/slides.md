@@ -19,7 +19,7 @@ Daniel Ecer &nbsp;·&nbsp; 23 June 2026
 
 **Citation extraction:** pulling references out of documents, structuring them, and linking them to the papers they point to.
 
-**28-29 May 2026, Frankfurt am Main.** Around 30 researchers, developers, and practitioners from bibliometrics, NLP, and open infrastructure.
+**28-29 May 2026, Frankfurt am Main.** Researchers, developers, and practitioners from bibliometrics, NLP, and open infrastructure.
 
 <p class="note"><a href="https://sites.google.com/view/workshop-on-citation-extractio">sites.google.com/view/workshop-on-citation-extractio</a> &nbsp;·&nbsp; <a href="https://doi.org/10.5281/zenodo.20382199">doi.org/10.5281/zenodo.20382199</a></p>
 
@@ -59,13 +59,13 @@ Many documents do not look like that:
 
 **GROBID:** best on its training domain; still the standard starting point.
 
-**LLMs** (DeepSeek V3, Mistral Small 3.2 24B): consistently better on SSH and multilingual text.
+**LLMs** (DeepSeek V3.1, Mistral Small 3.2 24B): consistently better on SSH and multilingual text.
 
-The emerging approach: **route by document type**
+One proposed direction: **route by document type**
 - GROBID for STEM journal articles in English
 - LLM for SSH, multilingual, and grey literature
 
-One talk showed a full pipeline: OCR, then a large LLM for extraction, then a fine-tuned 4B model that runs locally. Error rate went from 22% to 1%.
+One talk showed a staged pipeline for scanned references: preprocessing, OCR, then LLM-structured extraction. Error rate went from 22% to 1%.
 
 <p class="note">RenoBench: a new benchmark of ~160k citation pairs from PKP, SciELO, Redalyc, and ORE.</p>
 
@@ -96,5 +96,5 @@ Matching a reference string to an actual paper runs into:
 # Summary
 
 - Open citation data is expanding; the Barcelona Declaration marks a shift in what institutions are expected to make open
-- The field is converging on hybrid approaches: GROBID for STEM, LLMs for SSH and multilingual text
+- Hybrid approaches are being tested: GROBID for STEM, LLMs for SSH and multilingual text
 - Linking extracted references to papers remains the main unsolved problem
