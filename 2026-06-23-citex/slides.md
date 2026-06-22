@@ -65,7 +65,7 @@ Several talks presented new datasets.
 | **[RenoBench](https://huggingface.co/datasets/cometadata/renobench-clean)** | ~160k citation pairs from PKP, SciELO, Redalyc, and ORE |
 | **[OpenSSCI](https://zenodo.org/records/18172742)** | 63k social sciences full texts from SSOAR |
 
-<!-- Christian Boulanger (FOSSIL), Parth Sarin (RenoBench), Philipp Mayr (OpenSSCI), Francis Lareau (InTeRec) -->
+<!-- Christian Boulanger (FOSSIL), Parth Sarin (RenoBench), Philipp Mayr (OpenSSCI) -->
 
 ---
 
@@ -80,8 +80,6 @@ One proposed direction: **route by document type**
 - LLM for SSH, multilingual, and grey literature
 
 One talk showed a staged pipeline for scanned references: preprocessing, OCR, then LLM-structured extraction. Error rate went from 22% to 1%.
-
-<p class="note">RenoBench: a new benchmark of ~160k citation pairs from PKP, SciELO, Redalyc, and ORE.</p>
 
 <!-- GRAPHIA talk: GROBID leads on CEX data (its training distribution); DeepSeek V3 and Mistral Small 3.2 24B better on EXCITE and LinkedBooks. LoRA fine-tuning improved performance on SSH by up to 21%. Anele Schmidt talk: teacher-student strategy; Qwen 2.5 72B as teacher, 4B as student. -->
 
@@ -112,3 +110,4 @@ Matching a reference string to an actual paper runs into:
 - Open citation data is expanding; the Barcelona Declaration marks a shift in what institutions are expected to make open
 - Hybrid approaches are being tested: GROBID for STEM, LLMs for SSH and multilingual text
 - Linking extracted references to papers remains the main unsolved problem
+- Several new open datasets were released, particularly for SSH and humanities
