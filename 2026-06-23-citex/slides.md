@@ -42,7 +42,7 @@ The **[Barcelona Declaration on Open Research Information](https://barcelona-dec
 
 # Most tools were built for one kind of document
 
-GROBID and similar tools were trained on STEM journal articles: English, structured, with a reference list at the end.
+GROBID and similar tools were trained primarily on English-language journal articles in standard formats: structured, with a reference list at the end.
 
 Many documents do not look like that:
 
