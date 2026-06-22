@@ -35,7 +35,7 @@ Most citation data was proprietary until around 2017.
 - **Now:** around 40%
 - **June 2022:** Crossref committed to treating all deposited references as CC0
 
-The **Barcelona Declaration on Open Research Information** calls on institutions to treat research information as a public good. Supporters include OpenCitations, Crossref, OpenAlex, and eLife.
+The **[Barcelona Declaration on Open Research Information](https://barcelona-declaration.org/)** calls on institutions to treat research information as a public good. Supporters include OpenCitations, Crossref, OpenAlex, and eLife.
 
 <!-- Bianca Kramer keynote. Caveats on the Crossref figure: not all papers have reference lists deposited (~50% of journal articles); OJS journal coverage is low. AI licensing is creating new pressure — publishers are restricting database access for AI training, and open databases are affected. -->
 
