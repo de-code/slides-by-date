@@ -55,6 +55,20 @@ Many documents do not look like that:
 
 ---
 
+# Several new datasets
+
+Several talks presented new datasets.
+
+| Dataset | What it covers |
+|---|---|
+| **[FOSSIL](https://doi.org/10.48550/arXiv.2606.01109)** | Footnote-based SSH and humanities references, multilingual |
+| **[RenoBench](https://huggingface.co/datasets/cometadata/renobench-clean)** | ~160k citation pairs from PKP, SciELO, Redalyc, and ORE |
+| **[OpenSSCI](https://zenodo.org/records/18172742)** | 63k social sciences full texts from SSOAR |
+
+<!-- Christian Boulanger (FOSSIL), Parth Sarin (RenoBench), Philipp Mayr (OpenSSCI), Francis Lareau (InTeRec) -->
+
+---
+
 # GROBID and LLMs
 
 **GROBID:** best on its training domain; still the standard starting point.
