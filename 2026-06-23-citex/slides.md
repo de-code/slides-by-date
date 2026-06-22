@@ -96,8 +96,6 @@ Matching a reference string to an actual paper runs into:
 - Book chapters under-indexed in major databases
 - Publications without persistent identifiers
 
-**OpenSSCI:** 63k full-text documents from SSOAR, being contributed to OpenCitations.
-
 <!-- Philipp Mayr's talk. GESIS uses DOI where available; generates its own persistent ID otherwise (required for OpenCitations). The GRAPHIA talk also noted there is no existing benchmark dataset for citation linking in SSH. -->
 
 ---
