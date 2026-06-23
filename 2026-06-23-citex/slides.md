@@ -15,7 +15,7 @@ Daniel Ecer &nbsp;·&nbsp; 23 June 2026
 
 # What is CiteX?
 
-![bg right:45% contain](images/2026-06-22-dipf-cartoon-based-on-photo-generic-van.png)
+![bg right:45% contain](images/2026-06-22-dipf-sketch-based-on-photo-generic-van-resized.png)
 
 **Citation extraction:** pulling references out of documents, structuring them, and linking them to the papers they point to.
 
