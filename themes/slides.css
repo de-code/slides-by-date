@@ -250,6 +250,35 @@ section.grid-table td:first-child {
   height: 3em;
 }
 
+/* Catppuccin Mocha highlight.js token colours — matches pre { background: #1e1e2e } */
+.hljs-keyword,
+.hljs-operator { color: #cba6f7; }
+
+.hljs-string,
+.hljs-template-string,
+.hljs-regexp { color: #a6e3a1; }
+
+.hljs-number,
+.hljs-literal { color: #fab387; }
+
+.hljs-comment { color: #6c7086; font-style: italic; }
+
+.hljs-function,
+.hljs-title.function_ { color: #89b4fa; }
+
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-type { color: #f9e2af; }
+
+.hljs-built_in,
+.hljs-attr { color: #89dceb; }
+
+.hljs-decorator,
+.hljs-meta { color: #f38ba8; }
+
+.hljs-variable,
+.hljs-params { color: #cdd6f4; }
+
 section > :first-child {
   margin-top: 0 !important;
 }
