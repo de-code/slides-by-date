@@ -1,0 +1,363 @@
+---
+marp: true
+theme: slides
+html: true
+paginate: true
+---
+
+<!-- _class: title -->
+
+# Modern Python
+
+Daniel Ecer &nbsp;·&nbsp; 30 June 2026
+
+---
+
+# Python circa 2010
+
+```python
+import requests
+
+class Paper(object):
+    def __init__(self, doi, title):
+        self.doi = doi
+        self.title = title
+
+def fetch(doi):
+    url = 'https://api.crossref.org/works/' + doi
+    r = requests.get(url)
+    return Paper(doi, r.json()['message']['title'][0])
+```
+
+---
+
+# Python today
+
+```python
+from dataclasses import dataclass
+import httpx
+
+@dataclass(frozen=True)
+class Paper:
+    doi: str
+    title: str
+
+async def fetch(doi: str) -> Paper:
+    async with httpx.AsyncClient() as c:
+        r = await c.get(f"https://api.crossref.org/works/{doi}")
+    return Paper(doi, r.json()["message"]["title"][0])
+```
+
+<!-- The rest of the talk is about what each of those differences means. -->
+
+---
+
+<!-- _class: title -->
+
+# Type system
+
+Type annotations, dataclasses, Protocol, and gradual typing
+
+---
+
+# Python has had type hints since 3.5
+
+Types are checked by tools such as pyright or mypy. They are not enforced at runtime.
+
+```python
+# without types
+def parse_doi(text):
+    return text.strip().lower()
+
+# with types
+def parse_doi(text: str) -> str:
+    return text.strip().lower()
+```
+
+Running pyright is equivalent to running `tsc --noEmit`. It checks types without executing the code.
+
+---
+
+# Dataclasses generate the boilerplate
+
+`@dataclass` generates `__init__`, `__repr__`, and `__eq__` automatically. Available since Python 3.7.
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass(frozen=True)
+class Paper:
+    doi: str
+    title: str
+    year: int
+    authors: list[str] = field(default_factory=list)
+```
+
+---
+
+# Union types and TypedDict
+
+```python
+# equivalent to TypeScript's Paper | null
+def find(doi: str) -> Paper | None:
+    return papers.get(doi)
+```
+
+```python
+from typing import TypedDict
+class CrossrefMessage(TypedDict):
+    title: list[str]
+    DOI: str
+```
+
+`Paper | None` union syntax was added in Python 3.10. `Optional[Paper]` is the equivalent for earlier versions.
+
+---
+
+# Pydantic validates types at runtime
+
+```python
+from pydantic import BaseModel
+
+class Paper(BaseModel):
+    doi: str
+    title: str
+    year: int
+
+paper = Paper.model_validate(api_response)
+# raises ValidationError if fields are missing or the wrong type
+```
+
+Pydantic uses the same annotations as pyright but enforces them at runtime. Common for parsing API responses and config files.
+
+---
+
+# Protocol: structural typing
+
+```typescript
+// TypeScript
+interface Fetchable {
+  fetch(doi: string): Promise<Paper>
+}
+```
+
+```python
+# Python
+from typing import Protocol
+class Fetchable(Protocol):
+    async def fetch(self, doi: str) -> Paper: ...
+```
+
+Any class with a matching `fetch` method satisfies `Fetchable`. No `implements` keyword needed.
+
+---
+
+# Type checking is optional and gradual
+
+Pyright has three modes: `off`, `basic`, and `strict`. Existing untyped code continues to run.
+
+```json
+{
+  "typeCheckingMode": "strict"
+}
+```
+
+You can add types to one file at a time. Add `# pyright: strict` at the top of any file to opt in.
+
+---
+
+<!-- _class: title -->
+
+# Tooling
+
+uv, ruff, and pyproject.toml
+
+---
+
+# uv and ruff
+
+| Tool | Replaces | |
+|---|---|---|
+| **uv** | pip, venv, pip-tools | package and project manager |
+| **ruff** | flake8, isort, black | linter and formatter |
+
+Both are written in Rust.
+
+```bash
+uv init my-project    # create a project
+uv add httpx          # install a package
+uv run script.py      # run without activating a venv
+ruff check .          # lint
+ruff format .         # format
+```
+
+---
+
+# pyproject.toml
+
+Project metadata, dependencies, and tool configuration in one file.
+
+```toml
+[project]
+name = "my-tool"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.27", "pydantic>=2.0"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pyright]
+typeCheckingMode = "basic"
+```
+
+---
+
+<!-- _class: title -->
+
+# Language features
+
+f-strings, comprehensions, generators, pattern matching, and async
+
+---
+
+# f-strings: Python's template literals
+
+```javascript
+// JavaScript
+const url = `https://api.crossref.org/works/${doi}`
+```
+
+```python
+# Python
+url = f"https://api.crossref.org/works/{doi}"
+```
+
+Any expression works inside `{}`. Available since Python 3.6.
+
+---
+
+# Structural pattern matching, added in Python 3.10
+
+Matches on the shape of a value, not just its identity.
+
+```python
+match event:
+    case {"type": "article", "doi": doi}:
+        process_article(doi)
+    case {"type": "book", "isbn": isbn, "chapter": n}:
+        process_chapter(isbn, n)
+    case {"type": str(t)}:
+        log.warning(f"unknown type: {t}")
+    case _:
+        pass
+```
+
+---
+
+# List comprehensions
+
+```python
+dois   = list(map(lambda p: p.doi, papers))
+recent = list(filter(lambda p: p.year >= 2020, papers))
+```
+
+```python
+dois         = [p.doi for p in papers]
+recent       = [p for p in papers if p.year >= 2020]
+unique_years = {p.year for p in papers}
+```
+
+`map()` and `filter()` also exist. `{}` creates a set; `{p.doi: p for p in papers}` creates a dict.
+
+---
+
+# Generators produce values on demand
+
+```python
+# list: stored in memory
+titles = [p.title for p in papers]
+
+# generator expression: one value at a time
+titles = (p.title for p in papers)
+```
+
+```python
+import itertools
+all_papers = itertools.chain(arxiv_papers, pubmed_papers)
+first_ten  = list(itertools.islice(generate_papers(), 10))
+```
+
+`itertools` provides composable functions for working with any iterable.
+
+---
+
+# Generator functions
+
+```python
+def read_papers(path):
+    with open(path) as f:
+        for line in f:
+            yield json.loads(line)
+```
+
+```python
+def all_papers():
+    yield from read_papers("arxiv.jsonl")
+    yield from read_papers("pubmed.jsonl")
+```
+
+`yield` suspends the function and returns one value. `yield from` delegates to another iterable. Neither reads any data until you iterate.
+
+---
+
+# async/await: same keywords, same semantics as JavaScript
+
+```python
+async def fetch_data(url: str) -> dict:
+    async with httpx.AsyncClient() as c:
+        return (await c.get(url)).json()
+```
+
+If you write async JavaScript, you can already read this. `asyncio.gather()` is equivalent to `Promise.all()`.
+
+---
+
+# Putting it together: FastAPI
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+app = FastAPI()
+
+class Paper(BaseModel):
+    doi: str
+    title: str
+
+@app.get("/papers/{doi}", response_model=Paper)
+async def get_paper(doi: str) -> Paper:
+    return await fetch(doi)
+```
+
+<p class="note">FastAPI generates OpenAPI documentation automatically from the type annotations.</p>
+
+---
+
+# Where Python is widely used
+
+- **Scientific computing and ML**: NumPy, pandas, scikit-learn, PyTorch. The major scientific computing libraries are all Python-first with no JavaScript equivalents at the same scale.
+- **HTTP APIs**: FastAPI, Django REST Framework
+- **Scripting and data pipelines**
+
+---
+
+<!-- _class: dark -->
+
+# Summary
+
+- Type hints since 3.5; pyright checks them without any effect at runtime
+- `@dataclass`, `Protocol`, `TypedDict`, union types, and `match`/`case` have been added since 3.7
+- Pydantic enforces the same annotations at runtime
+- uv and ruff replace the older, slower toolchain
+- `async`/`await`, list comprehensions, and generators follow patterns JS/TS developers already know
+- The scientific computing ecosystem has no equivalent elsewhere
