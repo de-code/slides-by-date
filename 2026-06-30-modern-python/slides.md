@@ -74,7 +74,7 @@ def parse_doi(text: str) -> str:
     return text.strip().lower()
 ```
 
-Running pyright is equivalent to running `tsc --noEmit`. It checks types without executing the code.
+Running pyright checks types without executing the code.
 
 ---
 
@@ -98,7 +98,6 @@ class Paper:
 # Union types and TypedDict
 
 ```python
-# equivalent to TypeScript's Paper | null
 def find(doi: str) -> Paper | None:
     return papers.get(doi)
 ```
@@ -134,21 +133,20 @@ Pydantic uses the same annotations as pyright but enforces them at runtime. Comm
 
 # Protocol: structural typing
 
-```typescript
-// TypeScript
-interface Fetchable {
-  fetch(doi: string): Promise<Paper>
-}
-```
-
 ```python
-# Python
 from typing import Protocol
+
 class Fetchable(Protocol):
     async def fetch(self, doi: str) -> Paper: ...
 ```
 
-Any class with a matching `fetch` method satisfies `Fetchable`. No `implements` keyword needed.
+```python
+class CrossrefFetcher:
+    async def fetch(self, doi: str) -> Paper:
+        return ...
+```
+
+Any class with a matching `fetch` method satisfies `Fetchable`. No explicit declaration needed.
 
 ---
 
@@ -221,19 +219,15 @@ f-strings, comprehensions, generators, pattern matching, and async
 
 ---
 
-# f-strings: Python's template literals
-
-```javascript
-// JavaScript
-const url = `https://api.crossref.org/works/${doi}`
-```
+# f-strings
 
 ```python
-# Python
-url = f"https://api.crossref.org/works/{doi}"
+url   = f"https://api.crossref.org/works/{doi}"
+msg   = f"Found {len(papers)} papers"
+price = f"{ratio:.1%}"
 ```
 
-Any expression works inside `{}`. Available since Python 3.6.
+Any Python expression works inside `{}`. Format specs follow `str.format()` syntax: `:.2f`, `:.1%`, `:>10`. Available since Python 3.6.
 
 ---
 
@@ -311,7 +305,7 @@ def all_papers():
 
 ---
 
-# async/await: same keywords, same semantics as JavaScript
+# async/await
 
 ```python
 async def fetch_data(url: str) -> dict:
@@ -319,7 +313,7 @@ async def fetch_data(url: str) -> dict:
         return (await c.get(url)).json()
 ```
 
-If you write async JavaScript, you can already read this. `asyncio.gather()` is equivalent to `Promise.all()`.
+`asyncio.gather()` runs multiple coroutines concurrently.
 
 ---
 
@@ -345,7 +339,7 @@ async def get_paper(doi: str) -> Paper:
 
 # Where Python is widely used
 
-- **Scientific computing and ML**: NumPy, pandas, scikit-learn, PyTorch. The major scientific computing libraries are all Python-first with no JavaScript equivalents at the same scale.
+- **Scientific computing and ML**: NumPy, pandas, scikit-learn, PyTorch. The major scientific computing libraries are Python-first with no equivalents at the same scale elsewhere.
 - **HTTP APIs**: FastAPI, Django REST Framework
 - **Scripting and data pipelines**
 
@@ -359,5 +353,5 @@ async def get_paper(doi: str) -> Paper:
 - `@dataclass`, `Protocol`, `TypedDict`, union types, and `match`/`case` have been added since 3.7
 - Pydantic enforces the same annotations at runtime
 - uv and ruff replace the older, slower toolchain
-- `async`/`await`, list comprehensions, and generators follow patterns JS/TS developers already know
+- `async`/`await`, list comprehensions, and generators have a clear, readable syntax
 - The scientific computing ecosystem has no equivalent elsewhere
