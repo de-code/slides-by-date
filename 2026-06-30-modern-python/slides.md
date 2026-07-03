@@ -200,7 +200,7 @@ typeCheckingMode = "basic"
 
 # Language features
 
-f-strings, comprehensions, generators, pattern matching, and async
+f-strings, comprehensions, generators, pattern matching, and async/await
 
 ---
 
@@ -213,24 +213,6 @@ price = f"{ratio:.1%}"
 ```
 
 Any Python expression works inside `{}`. Format specs follow `str.format()` syntax: `:.2f`, `:.1%`, `:>10`. Available since Python 3.6.
-
----
-
-# Structural pattern matching, added in Python 3.10
-
-Matches on the shape of a value, not just its identity.
-
-```python
-match event:
-    case {"type": "article", "doi": doi}:
-        process_article(doi)
-    case {"type": "book", "isbn": isbn, "chapter": n}:
-        process_chapter(isbn, n)
-    case {"type": str(t)}:
-        log.warning(f"unknown type: {t}")
-    case _:
-        pass
-```
 
 ---
 
@@ -287,6 +269,24 @@ def all_papers():
 ```
 
 `yield` suspends the function and returns one value. `yield from` delegates to another iterable. Neither reads any data until you iterate.
+
+---
+
+# Structural pattern matching, added in Python 3.10
+
+Matches on the shape of a value, not just its identity.
+
+```python
+match event:
+    case {"type": "article", "doi": doi}:
+        process_article(doi)
+    case {"type": "book", "isbn": isbn, "chapter": n}:
+        process_chapter(isbn, n)
+    case {"type": str(t)}:
+        log.warning(f"unknown type: {t}")
+    case _:
+        pass
+```
 
 ---
 
