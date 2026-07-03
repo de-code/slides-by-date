@@ -74,7 +74,7 @@ def parse_doi(text: str) -> str:
     return text.strip().lower()
 ```
 
-Running pyright checks types without executing the code.
+mypy and pyright check types without executing the code. Existing untyped code continues to run, and types can be added one file at a time.
 
 ---
 
@@ -150,43 +150,28 @@ Any class with a matching `fetch` method satisfies `Fetchable`. No explicit decl
 
 ---
 
-# Type checking is optional and gradual
-
-Pyright has three modes: `off`, `basic`, and `strict`. Existing untyped code continues to run.
-
-```json
-{
-  "typeCheckingMode": "strict"
-}
-```
-
-You can add types to one file at a time. Add `# pyright: strict` at the top of any file to opt in.
-
----
-
 <!-- _class: title -->
 
 # Tooling
 
-uv, ruff, and pyproject.toml
+uv, ruff, mypy, pylint, and pyproject.toml
 
 ---
 
-# uv and ruff
+# Python toolchain
 
-| Tool | Replaces | |
-|---|---|---|
-| **uv** | pip, venv, pip-tools | package and project manager |
-| **ruff** | flake8, isort, black | linter and formatter |
+| Tool | Role |
+|---|---|
+| **uv** | Package and project manager |
+| **ruff** | Linter and formatter |
+| **mypy** | Type checker |
+| **pylint** | Static analysis |
 
-Both are written in Rust.
+ruff covers linting and formatting only, not type checking or static analysis. pyright is an alternative to mypy with stronger VS Code integration.
 
 ```bash
-uv init my-project    # create a project
-uv add httpx          # install a package
-uv run script.py      # run without activating a venv
-ruff check .          # lint
-ruff format .         # format
+uv add httpx       # install a package
+uv run script.py   # run without activating a venv
 ```
 
 ---
@@ -337,11 +322,12 @@ async def get_paper(doi: str) -> Paper:
 
 ---
 
-# Where Python is widely used
+# The Python ecosystem
 
-- **Scientific computing and ML**: NumPy, pandas, scikit-learn, PyTorch. The major scientific computing libraries are Python-first with no equivalents at the same scale elsewhere.
-- **HTTP APIs**: FastAPI, Django REST Framework
-- **Scripting and data pipelines**
+- **Scientific computing and ML**: NumPy, pandas, scikit-learn, PyTorch
+- **Data pipelines and orchestration**: Airflow, Prefect, dbt
+- **HTTP APIs**: Django, FastAPI
+- **Infrastructure and automation**: Ansible, many CLI tools
 
 ---
 
@@ -349,7 +335,7 @@ async def get_paper(doi: str) -> Paper:
 
 # Summary
 
-- Type hints since 3.5; pyright checks them without any effect at runtime
+- Type hints since 3.5; mypy or pyright check them without any effect at runtime
 - `@dataclass`, `Protocol`, `TypedDict`, union types, and `match`/`case` have been added since 3.7
 - Pydantic enforces the same annotations at runtime
 - uv and ruff replace the older, slower toolchain
