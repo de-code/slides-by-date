@@ -152,52 +152,6 @@ Any class with a matching `fetch` method satisfies `Fetchable`. No explicit decl
 
 <!-- _class: title -->
 
-# Tooling
-
-uv, ruff, mypy, pylint, and pyproject.toml
-
----
-
-# Python toolchain
-
-| Tool | Role |
-|---|---|
-| **uv** | Package and project manager |
-| **ruff** | Linter and formatter |
-| **mypy** | Type checker |
-| **pylint** | Static analysis |
-
-ruff covers linting and formatting only, not type checking or static analysis. pyright is an alternative to mypy with stronger VS Code integration.
-
-```bash
-uv add httpx       # install a package
-uv run script.py   # run without activating a venv
-```
-
----
-
-# pyproject.toml
-
-Project metadata, dependencies, and tool configuration in one file.
-
-```toml
-[project]
-name = "my-tool"
-version = "0.1.0"
-requires-python = ">=3.12"
-dependencies = ["httpx>=0.27", "pydantic>=2.0"]
-
-[tool.ruff]
-line-length = 100
-
-[tool.pyright]
-typeCheckingMode = "basic"
-```
-
----
-
-<!-- _class: title -->
-
 # Language features
 
 f-strings, comprehensions, generators, pattern matching, and async/await
@@ -319,6 +273,52 @@ async def get_paper(doi: str) -> Paper:
 ```
 
 <p class="note">FastAPI generates OpenAPI documentation automatically from the type annotations.</p>
+
+---
+
+<!-- _class: title -->
+
+# Tooling
+
+uv, ruff, mypy, pylint, and pyproject.toml
+
+---
+
+# Python toolchain
+
+| Tool | Role |
+|---|---|
+| **uv** | Package and project manager |
+| **ruff** | Linter and formatter |
+| **mypy** | Type checker |
+| **pylint** | Static analysis |
+
+ruff covers linting and formatting only, not type checking or static analysis. pyright is an alternative to mypy with stronger VS Code integration.
+
+```bash
+uv add httpx       # install a package
+uv run script.py   # run without activating a venv
+```
+
+---
+
+# pyproject.toml
+
+Project metadata, dependencies, and tool configuration in one file.
+
+```toml
+[project]
+name = "my-tool"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.27", "pydantic>=2.0"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pyright]
+typeCheckingMode = "basic"
+```
 
 ---
 
