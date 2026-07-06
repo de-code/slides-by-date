@@ -313,11 +313,11 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = ["httpx>=0.27", "pydantic>=2.0"]
 
+[dependency-groups]
+dev = ["mypy", "ruff", "pytest"]
+
 [tool.ruff]
 line-length = 100
-
-[tool.pyright]
-typeCheckingMode = "basic"
 ```
 
 ---
