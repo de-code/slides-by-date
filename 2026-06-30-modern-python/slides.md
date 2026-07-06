@@ -338,6 +338,6 @@ typeCheckingMode = "basic"
 - Type hints since 3.5; mypy or pyright check them without any effect at runtime
 - `@dataclass`, `Protocol`, `TypedDict`, union types, and `match`/`case` have been added since 3.7
 - Pydantic enforces the same annotations at runtime
-- uv and ruff replace the older, slower toolchain
-- `async`/`await`, list comprehensions, and generators have a clear, readable syntax
+- uv and ruff replace pip, venv, flake8, and black
+- `async`/`await`, list comprehensions, and generators are part of the standard language
 - The scientific computing ecosystem has no equivalent elsewhere
