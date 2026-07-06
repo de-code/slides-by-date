@@ -288,6 +288,30 @@ state. asyncio.gather() schedules multiple coroutines and interleaves their exec
 
 ---
 
+# Threading and multiprocessing
+
+```python
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+
+# I/O-bound: threads release the GIL while waiting on I/O
+with ThreadPoolExecutor() as pool:
+    results = list(pool.map(fetch, urls))
+
+# CPU-bound: separate processes bypass the GIL entirely
+with ProcessPoolExecutor() as pool:
+    results = list(pool.map(process, items))
+```
+
+The GIL prevents CPU parallelism in threads. Python 3.13 ships an experimental free-threaded build with the GIL disabled (PEP 703).
+
+<!--
+ThreadPoolExecutor uses threads; the GIL releases during I/O so threads improve throughput for network and file work.
+ProcessPoolExecutor spawns separate processes, each with their own GIL, so CPU-bound work genuinely runs in parallel.
+Python 3.13 (October 2024) ships a free-threaded build where the GIL can be disabled; this is experimental and opt-in.
+-->
+
+---
+
 # Putting it together: FastAPI
 
 ```python
