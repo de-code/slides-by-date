@@ -148,6 +148,12 @@ class CrossrefFetcher:
 
 Any class with a matching `fetch` method satisfies `Fetchable`. No explicit declaration needed.
 
+<!--
+CrossrefFetcher does not declare that it implements Fetchable. mypy verifies the match
+structurally at check time. Useful for dependency injection and testing: any object with
+the right method signature satisfies the Protocol, with no shared base class required.
+-->
+
 ---
 
 <!-- _class: title -->
@@ -224,6 +230,12 @@ def all_papers():
 
 `yield` suspends the function and returns one value. `yield from` delegates to another iterable. Neither reads any data until you iterate.
 
+<!--
+Calling read_papers() does not execute the function body — it returns a generator object.
+The body runs up to the first yield when you iterate. Local variables are preserved between
+yields. yield from is equivalent to a for loop with yield, but more efficient and composable.
+-->
+
 ---
 
 # Structural pattern matching, added in Python 3.10
@@ -242,6 +254,13 @@ match event:
         pass
 ```
 
+<!--
+This is not a switch statement on a value — it matches on the shape of the data.
+The first case checks that event has a "type" key equal to "article" AND a "doi" key,
+and binds the doi value to a local variable, all in one expression. This is called
+structural pattern matching or destructuring.
+-->
+
 ---
 
 # async/await
@@ -252,7 +271,20 @@ async def fetch_data(url: str) -> dict:
         return (await c.get(url)).json()
 ```
 
-`asyncio.gather()` runs multiple coroutines concurrently.
+```python
+results = await asyncio.gather(
+    fetch_data(url1),
+    fetch_data(url2),
+)
+```
+
+`asyncio.gather()` runs coroutines concurrently, switching between them when each is waiting on I/O.
+
+<!--
+Python's async uses cooperative multitasking. The event loop runs one coroutine at a time,
+switching when one awaits. There is no parallelism, but also no race conditions on shared
+state. asyncio.gather() schedules multiple coroutines and interleaves their execution.
+-->
 
 ---
 
