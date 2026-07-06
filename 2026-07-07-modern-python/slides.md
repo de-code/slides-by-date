@@ -9,7 +9,7 @@ paginate: true
 
 # Modern Python
 
-Daniel Ecer &nbsp;·&nbsp; 30 June 2026
+Daniel Ecer &nbsp;·&nbsp; 7 July 2026
 
 ---
 
