@@ -217,8 +217,8 @@ first_ten  = list(itertools.islice(generate_papers(), 10))
 
 ```python
 def read_papers(path):
-    with open(path) as f:
-        for line in f:
+    with open(path) as fp:
+        for line in fp:
             yield json.loads(line)
 ```
 
