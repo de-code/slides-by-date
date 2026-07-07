@@ -249,7 +249,7 @@ match event:
     case {"type": "book", "isbn": isbn, "chapter": n}:
         process_chapter(isbn, n)
     case {"type": str(t)}:
-        log.warning(f"unknown type: {t}")
+        LOGGER.warning("unknown type: %s", t)
     case _:
         pass
 ```
