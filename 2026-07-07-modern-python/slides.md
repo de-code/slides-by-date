@@ -25,8 +25,8 @@ class Paper(object):
 
 def fetch(doi):
     url = 'https://api.crossref.org/works/' + doi
-    r = requests.get(url)
-    return Paper(doi, r.json()['message']['title'][0])
+    response = requests.get(url)
+    return Paper(doi, response.json()['message']['title'][0])
 ```
 
 ---
@@ -43,9 +43,9 @@ class Paper:
     title: str
 
 async def fetch(doi: str) -> Paper:
-    async with httpx.AsyncClient() as c:
-        r = await c.get(f"https://api.crossref.org/works/{doi}")
-    return Paper(doi, r.json()["message"]["title"][0])
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"https://api.crossref.org/works/{doi}")
+    return Paper(doi, response.json()["message"]["title"][0])
 ```
 
 <!-- The rest of the talk is about what each of those differences means. -->
