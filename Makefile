@@ -3,7 +3,7 @@ CHROME_BIN := $(shell ls $(HOME)/.cache/puppeteer/chrome/*/chrome-linux64/chrome
 SLIDES := $(patsubst %/,%,$(sort $(dir $(wildcard 2*-*/slides.md))))
 OUT := output
 
-.PHONY: install vscode all-pdf $(SLIDES:%=%.pdf) $(SLIDES:%=%.html) $(SLIDES:%=%.pptx)
+.PHONY: install vscode all-pdf serve $(SLIDES:%=%.pdf) $(SLIDES:%=%.html) $(SLIDES:%=%.pptx)
 
 install: node_modules vscode
 
@@ -17,6 +17,9 @@ vscode:
 	mv .vscode/settings.json.tmp .vscode/settings.json
 
 all-pdf: $(SLIDES:%=%.pdf)
+
+serve: | $(OUT)
+	python3 -m http.server 8000 --directory $(OUT)
 
 $(SLIDES:%=%.pdf): %.pdf: %/slides.md | $(OUT)
 	CHROME_NO_SANDBOX=1 $(MARP) $< --output $(OUT)/$@ --browser-path $(CHROME_BIN) --allow-local-files
