@@ -216,14 +216,14 @@ first_ten  = list(itertools.islice(generate_papers(), 10))
 # Generator functions
 
 ```python
-def read_papers(path):
+from collections.abc import Iterator
+
+def read_papers(path: str) -> Iterator[dict]:
     with open(path) as fp:
         for line in fp:
             yield json.loads(line)
-```
 
-```python
-def all_papers():
+def all_papers() -> Iterator[dict]:
     yield from read_papers("arxiv.jsonl")
     yield from read_papers("pubmed.jsonl")
 ```
