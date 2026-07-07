@@ -127,7 +127,7 @@ paper = Paper.model_validate(api_response)
 # raises ValidationError if fields are missing or the wrong type
 ```
 
-Pydantic uses the same annotations as pyright but enforces them at runtime. Common for parsing API responses and config files.
+Pydantic enforces standard type annotations at runtime and supports additional validation rules such as value ranges and string patterns via `Field()`.
 
 ---
 
