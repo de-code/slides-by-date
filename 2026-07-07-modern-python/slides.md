@@ -62,7 +62,7 @@ Type annotations, dataclasses, Protocol, and gradual typing
 
 # Python has had type hints since 3.5
 
-Types are checked by tools such as pyright or mypy. They are not enforced at runtime.
+Types are checked by tools such as mypy or pyright. They are not enforced at runtime.
 
 ```python
 # without types
