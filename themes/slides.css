@@ -291,3 +291,130 @@ section[data-marpit-pagination]::after {
   color: #a1a1aa;
   font-size: 0.9rem;
 }
+
+/* --- terminal / Zellij UI mockups (Catppuccin Mocha palette) --- */
+.term,
+.zellij {
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  background: #181825;
+  border: 1px solid #313244;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  color: #cdd6f4;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  margin-top: 1em;
+}
+
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.5em 0.8em;
+  background: #11111b;
+  border-bottom: 1px solid #313244;
+}
+
+.term-dot {
+  width: 0.78em;
+  height: 0.78em;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.term-dot.r { background: #f38ba8; }
+.term-dot.y { background: #f9e2af; }
+.term-dot.g { background: #a6e3a1; }
+
+.term-title {
+  margin-left: 0.6em;
+  color: #9399b2;
+  font-size: 0.95em;
+}
+
+.term-body,
+.zj-pane {
+  padding: 0.85em 1.1em;
+}
+
+.ln {
+  display: block;
+  white-space: pre;
+}
+
+.ln-gap { height: 0.55em; }
+
+.cc-input {
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  padding: 0.35em 0.7em;
+  margin-top: 0.55em;
+  color: #6c7086;
+}
+
+.zj-tabs {
+  display: flex;
+  gap: 0.4em;
+  padding: 0.45em 0.6em;
+  background: #11111b;
+  border-bottom: 1px solid #313244;
+}
+
+.zj-tab {
+  padding: 0.18em 0.8em;
+  border-radius: 5px;
+  background: #313244;
+  color: #bac2de;
+  font-size: 0.95em;
+}
+
+.zj-tab.active {
+  background: #a6e3a1;
+  color: #11111b;
+  font-weight: 700;
+}
+
+.zj-tab .run { color: #fab387; }
+
+.zj-pane-title {
+  color: #6c7086;
+  font-size: 0.9em;
+  margin-bottom: 0.45em;
+}
+
+.zj-status,
+.term-status {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.4em 0.75em;
+  background: #11111b;
+  border-top: 1px solid #313244;
+  font-size: 0.95em;
+}
+
+.seg { color: #9399b2; }
+.seg-sep { color: #45475a; }
+
+.seg-name {
+  background: #89b4fa;
+  color: #11111b;
+  padding: 0.05em 0.55em;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.tok-g { color: #a6e3a1; }
+.tok-b { color: #89b4fa; }
+.tok-m { color: #cba6f7; }
+.tok-p { color: #fab387; }
+.tok-d { color: #6c7086; }
+.cc-dot { color: #a6e3a1; }
+
+.mock-tag {
+  margin-left: auto;
+  color: #585b70;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+}
