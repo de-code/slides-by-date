@@ -173,7 +173,12 @@ of intent that everything else follows from.
 - each runs in its **own git worktree**, so there is no shared checkout and no collisions
 - **Zellij** manages them, so they run **in parallel** while I move between them
 
-<p class="note">Main point of the talk. Walk through the Zellij mock on the next slide.</p>
+<p class="note">Thin, clearly separated specs merge cleanly. Overlapping ones still work, the merge just takes more care, and the agent can help with that too.</p>
+
+<!--
+Main point of the talk. Walk through the Zellij mock on the next slide.
+-->
+
 
 ---
 
@@ -223,8 +228,12 @@ Point at the tabs (four named sessions, two marked busy) and the statusline (bra
 worktree), not the individual tool lines. Those carry the message from the back of the room.
 
 Each tab is a session I review the same way as this one: I tab in, answer questions,
-give feedback, and merge each branch as it finishes. The parallelism is in the waiting,
-not in the reviewing.
+give feedback, and merge each branch as it finishes. Tests and CI run on each branch as
+normal, so the review sits on top of that rather than instead of it. The parallelism is
+in the waiting, not in the reviewing.
+
+If asked about cost: running several sessions at once multiplies token use, and the
+practical limit is my own attention rather than the machine.
 -->
 
 ---
@@ -246,7 +255,7 @@ but the spec could equally live in the code repo, a GitHub issue, or a pull requ
 
 # Takeaway
 
-- **Isolate** the whole thing in a disposable VM, then you can stop approving commands
+- **Isolate** the whole thing in a disposable sandbox, then you can stop approving commands
 - **Plan in one place**: a single session for brainstorming and specs
 - **Execute in many**: one named session per spec, each in its own worktree, in parallel
 - **Share notes** in a place every session can read so parallel work stays coherent
