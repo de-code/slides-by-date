@@ -11,7 +11,7 @@ paginate: true
 
 My Claude Code setup
 
-Daniel Ecer &nbsp;·&nbsp; 11 August 2026
+Daniel Ecer &nbsp;·&nbsp; 15 September 2026
 
 <!--
 Lightning talk: 7 minutes + 3 minutes Q&A.
@@ -90,23 +90,16 @@ This is why I stopped approving by hand and isolate instead.
 
 Each Claude Code session can run **any** command without asking me.
 
-Two separate parts of the setup make it practical:
-
-- a **throwaway VM** limits the damage, so I do not vet each command
-- **isolated worktrees** let several agents run without interfering
+- the CLI runs in a **local Lima VM**, not on my host, and inside it I **auto-approve everything**
+- worst case is a rebuilt VM and the project folders I share with it, not a wiped laptop
+- **isolated worktrees** let several sessions run without interfering
 
 <p class="note">The rest of this talk is about the workflow this makes possible.</p>
 
----
-
-# Foundation: a sandbox I do not need to watch
-
-- Claude Code CLI runs inside a **local Lima VM**, not on my host
-- inside the VM I **auto-approve every command**, so there are no approval prompts
-- worst case is a rebuilt VM, not a wiped laptop
-
 <!--
-Pre-empt the auto-approve reaction here in one line: it is a disposable VM, the host is never exposed.
+Pre-empt the auto-approve reaction here in one line: it is a disposable VM, the host is never exposed
+beyond the folders I share with it. Anything committed and pushed survives a rebuild, uncommitted
+work in a shared folder does not.
 Keep this slide fast, under a minute. It is the setup, not the main point.
 -->
 
@@ -116,7 +109,7 @@ Keep this slide fast, under a minute. It is the setup, not the main point.
 
 - one long-lived, **named** session, used only for brainstorming and writing specs
 - no code is written here; this is where the thinking happens
-- the output is a **spec**, saved outside the code
+- the output is a short **requirements spec**, saved outside the code
 
 <div class="term">
   <div class="term-bar">
@@ -230,6 +223,10 @@ of intent that everything else follows from.
 The idea of parallel agents is easy to say and hard to picture, so this mock does the work.
 Point at the tabs (four named sessions, two marked busy) and the statusline (branch and
 worktree), not the individual tool lines. Those carry the message from the back of the room.
+
+Each tab is a session I review the same way as this one: I tab in, answer questions,
+give feedback, and merge each branch as it finishes. The parallelism is in the waiting,
+not in the reviewing.
 -->
 
 ---
