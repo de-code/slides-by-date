@@ -7,9 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# Plan in one place, execute in many
-
-My Claude Code setup
+# My Claude Code setup:<br>plan in one place, execute in many
 
 Daniel Ecer &nbsp;·&nbsp; 15 September 2026
 
