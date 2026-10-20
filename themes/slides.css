@@ -418,3 +418,427 @@ section[data-marpit-pagination]::after {
   font-size: 0.82em;
   letter-spacing: 0.04em;
 }
+
+/* --- review page mockups (light web UI, matching the review tool's own) --- */
+.rv {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8fafc;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  color: #111827;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  margin-top: 0.9em;
+}
+
+.rv-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.45em 0.8em;
+  background: #e8edf3;
+  border-bottom: 1px solid #cbd5e1;
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  color: #6b7280;
+}
+
+.rv-bar .term-title,
+.rv-bar .mock-tag { color: #94a3b8; }
+
+.rv-body {
+  padding: 0.9em 1.1em;
+}
+
+/* A page of labelled lines: a name in the margin, the band that marks the run,
+   and the line itself tinted with the label's colour.  Each element takes its
+   colour from a --c custom property set where it is used, which is the review
+   tool's own palette. */
+.rv-row {
+  display: flex;
+  align-items: center;
+  height: 1.45em;
+}
+
+.rv-name {
+  width: 8.5em;
+  padding-right: 0.5em;
+  text-align: right;
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  color: var(--c);
+  white-space: nowrap;
+}
+
+/* A band is one bar for the whole element, so the per-row segments have to butt
+   together with no rounding between them.  Only the ends of a run are rounded,
+   and a run starts clear of the one above it, which is the gap the real page
+   puts between two elements. */
+.rv-band {
+  align-self: stretch;
+  width: 7px;
+  border-radius: 0;
+  margin-right: 0.8em;
+  background: var(--c);
+}
+
+.rv-row.runstart .rv-band {
+  margin-top: 4px;
+  border-radius: 3px 3px 0 0;
+}
+
+.rv-row.runend .rv-band {
+  border-radius: 0 0 3px 3px;
+}
+
+.rv-cell {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+/* The label covers the column, not just the text in it. */
+.rv-ov {
+  position: absolute;
+  inset: 0;
+  background: var(--c);
+  opacity: 0.14;
+}
+
+.rv-line {
+  position: relative;
+  height: 0.62em;
+  border-radius: 2px;
+  background: #4b5563;
+  opacity: 0.5;
+}
+
+.rv-line.w95 { width: 95%; }
+.rv-line.w90 { width: 90%; }
+.rv-line.w80 { width: 80%; }
+.rv-line.w70 { width: 70%; }
+.rv-line.w65 { width: 65%; }
+.rv-line.w60 { width: 60%; }
+.rv-line.w55 { width: 55%; }
+.rv-line.w40 { width: 40%; }
+
+.rv-flag {
+  color: #dc2626;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+.rv-gap { height: 0.5em; }
+
+/* One reference line, token by token: what the citation model draws is boxes
+   this small, with the label written under each. */
+/* A reference list, a box per field.  One reference cannot show what hovering
+   is for, which is reading a field against the others of its label elsewhere on
+   the page, so the mock has to hold several. */
+.rv-cite {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  /* room underneath for the hover readout, which the page floats by the cursor */
+  padding: 0.6em 0.3em 2.6em;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+}
+
+.rv-cite-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15em;
+}
+
+.rv-tok {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+}
+
+/* A field is a filled block, not an outline.  With no page scan behind it a
+   hairline border in the label's colour is invisible at this size, and it is
+   also not what the page does: without the image the spans are tinted fills of
+   their label's colour.  White is the fallback where color-mix is not
+   supported. */
+.rv-tok .t {
+  padding: 0.05em 0.3em;
+  border: 2px solid var(--c);
+  border-radius: 3px;
+  background: #ffffff;
+  background: color-mix(in srgb, var(--c) 26%, #ffffff);
+  color: #1f2937;
+}
+
+/* The panel at the foot of a document, where the verdict is given. */
+.rv-panel {
+  padding: 0.7em 1em 0.75em;
+  background: #e8edf3;
+  border-top: 1px solid #cbd5e1;
+}
+
+.rv-prow {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.45em;
+}
+
+.rv-prow:first-child { margin-top: 0; }
+
+.rv-pill,
+.rv-btn {
+  padding: 0.12em 0.7em;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.rv-pill {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.rv-btn.pressed {
+  background: #111827;
+  border-color: #111827;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.rv-input {
+  flex: 1;
+  padding: 0.12em 0.5em;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #9ca3af;
+}
+
+.rv-at {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.rv-sug {
+  padding: 0 0.3em;
+  border-radius: 4px;
+  background: #b45309;
+  color: #f8fafc;
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+
+.rv-muted { color: #6b7280; }
+
+/* Label colours, from the review tool's own palette, which hands them out in
+   the order the model declares its labels.  Set on the row or the token so the
+   name, the band and the line all take the same one. */
+.lb-body { --c: #e87ba4; }
+.lb-refs { --c: #0e8ab0; }
+.lb-note { --c: #1baf7a; }
+.lb-author { --c: #eb6834; }
+.lb-title { --c: #2a78d6; }
+.lb-other { --c: #94a3b8; }
+
+/* Two bands of one label are told apart by shade rather than colour, which is
+   what the review page does for a reference list: every line carries
+   `<reference>`, so the break between two of them has to show along the whole
+   of both. */
+.rv-row.alt .rv-band { opacity: 0.45; }
+.rv-row.alt .rv-ov { opacity: 0.05; }
+
+.lb-ref { --c: #2a78d6; }
+
+/* The pill that steps through a regeneration's changes, counting runs rather
+   than lines. */
+.rv-foot {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.1em 0.9em;
+}
+
+.rv-navpill {
+  padding: 0.15em 0.8em;
+  border-radius: 999px;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 0.9em;
+}
+
+/* The strip of page controls, which is the first thing on the real page. */
+.rv-controls {
+  display: flex;
+  gap: 1.2em;
+  padding: 0.45em 1.1em;
+  border-bottom: 1px solid #cbd5e1;
+  color: #6b7280;
+  font-size: 0.92em;
+}
+
+.rv-controls .on::before { content: "\2611\00a0"; }
+.rv-controls .off::before { content: "\2610\00a0"; }
+
+/* Citation fields: the page draws a box per field and names none of them, which
+   is why a label is read by hovering.  A field the model left unlabelled is
+   grey, the same as the punctuation, which is what makes it hard to see. */
+/* Nothing is dimmed: a field that is not a peer is simply the page's ordinary
+   span, and the marking comes from the peers being filled solid. Fading them
+   with opacity washed the hue into the background and left the page looking
+   empty, which is the opposite of what the slide is for. */
+
+.rv-tok.peer .t {
+  border-width: 2px;
+  background: var(--c);
+  color: #ffffff;
+}
+
+.rv-tok.hovered {
+  position: relative;
+}
+
+.rv-tok.hovered .t {
+  border-width: 3px;
+  background: var(--c);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.25);
+}
+
+/* The pointer, so it reads as a field under the cursor rather than a field
+   picked out for no reason.  The white outline is four hard drop-shadows, one
+   per direction, which follow the clipped shape on every side.  Scaling a
+   second arrow behind it put the outline on the bottom and right only, because
+   it grew away from the tip it was anchored at. */
+.rv-cursor {
+  position: absolute;
+  left: 34%;
+  top: 46%;
+  width: 16px;
+  height: 25px;
+  background: #111827;
+  clip-path: polygon(
+    0 0,
+    0 73.7%,
+    29.2% 56.8%,
+    51.7% 92.1%,
+    73.3% 86.3%,
+    50% 52.1%,
+    93.3% 52.1%
+  );
+  filter:
+    drop-shadow(1.5px 0 0 #ffffff)
+    drop-shadow(-1.5px 0 0 #ffffff)
+    drop-shadow(0 1.5px 0 #ffffff)
+    drop-shadow(0 -1.5px 0 #ffffff)
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* A tooltip by the pointer.  Anchored to the field under the cursor rather
+   than to the list, so it sits where the eye already is. */
+.rv-tok.hovered .rv-readout {
+  position: absolute;
+  left: calc(34% + 13px);
+  top: calc(46% + 19px);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.3em 0.6em;
+  border-radius: 5px;
+  background: #111827;
+  color: #f9fafb;
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  white-space: nowrap;
+}
+
+.rv-tok.hovered .rv-readout .sw {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 2px;
+  background: var(--c);
+}
+
+/* The theme's inline code is sized for slide text, which is far too big inside
+   a mockup. */
+.rv code {
+  font-size: 0.9em;
+  padding: 0 0.25em;
+  background: rgba(0, 0, 0, 0.07);
+  color: inherit;
+}
+
+/* The rest of the citation model's palette, in the order the model declares its
+   labels. */
+.lb-journal { --c: #0e8ab0; }
+.lb-date { --c: #9a3412; }
+.lb-volume { --c: #008300; }
+.lb-issue { --c: #7e22ce; }
+.lb-pages { --c: #e34948; }
+.lb-web { --c: #4a3aa7; }
+
+/* The panel's own layout: a spacer pushes the verdict buttons to the right,
+   the suggestion is a select ahead of the comment box, and what the comment is
+   about sits on its own row underneath. */
+.rv-grow { margin-right: auto; }
+
+.rv-select {
+  padding: 0.12em 0.5em;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+.rv-about { color: #6b7280; }
+
+.rv-about strong { color: #1f2937; }
+
+.rv-about q {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Segmentation labels, in the order that model declares them. */
+.lb-headnote { --c: #eb6834; }
+.lb-page { --c: #eda100; }
+
+/* The whitespace a printed page puts between a running head, the body and a
+   page number, so the bands are separated the way the page separates them. */
+.rv-row.spaced { margin-top: 0.7em; }
+
+/* The band is always immediately left of the text it covers, so a run that
+   does not span the column takes its band and its name across with it: the row
+   packs name, band and text together and moves the group, rather than leaving
+   a band in the far margin pointing at empty paper. */
+.rv-row.right .rv-name,
+.rv-row.centred .rv-name {
+  margin-left: auto;
+  width: auto;
+  text-align: right;
+}
+
+.rv-row.right .rv-cell { flex: 0 0 18%; }
+
+.rv-row.centred .rv-cell {
+  flex: 0 0 34%;
+  margin-right: auto;
+}
+
+.rv-row.right .rv-line,
+.rv-row.centred .rv-line { width: 100%; }
+
+/* A span the regeneration moved, outlined the way the review page outlines a
+   changed span.  The outline goes on the cell rather than the line, because
+   the line is drawn at reduced opacity as the page's own text. */
+.rv-row.changed .rv-cell {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
