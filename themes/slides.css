@@ -563,18 +563,34 @@ section[data-marpit-pagination]::after {
   gap: 0.2em;
 }
 
-/* A field is a filled block, not an outline.  With no page scan behind it a
-   hairline border in the label's colour is invisible at this size, and it is
-   also not what the page does: without the image the spans are tinted fills of
-   their label's colour.  White is the fallback where color-mix is not
-   supported. */
+/* A field is a filled block, not an outline: with no page scan behind it a
+   hairline border is invisible at this size, and it is not what the page does
+   either, since without the image the spans are tinted fills.
+
+   The tint is an underlay at reduced opacity rather than `color-mix`.  A
+   `color-mix` that fails is invalid at computed-value time, so it does not
+   fall back to the declaration above it: the base rule went white and the peer
+   and hovered rules, which had no fallback at all, went with it, leaving three
+   states separated only by fractions of a pixel of border.  Opacity on an
+   underlay is the mechanism the app uses anyway (`fill-opacity`), and it
+   cannot silently drop out. */
 .rv-tok .t {
-  padding: 0.05em 0.3em;
+  position: relative;
+  isolation: isolate;
+  padding: 0.12em 0.35em;
   border: 2px solid var(--c);
   border-radius: 3px;
-  background: #ffffff;
-  background: color-mix(in srgb, var(--c) 26%, #ffffff);
+  background: transparent;
   color: #1f2937;
+}
+
+.rv-tok .t::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--c);
+  opacity: 0.2;
 }
 
 /* The panel at the foot of a document, where the verdict is given. */
@@ -694,22 +710,26 @@ section[data-marpit-pagination]::after {
    with opacity washed the hue into the background and left the page looking
    empty, which is the opposite of what the slide is for. */
 
-.rv-tok.peer .t {
-  border-width: 2px;
-  background: var(--c);
-  color: #ffffff;
-}
-
+/* The others of the label under the cursor, and the one under it.  These are
+   deliberately alike, because seeing a field together with its own kind is the
+   whole purpose: both thicken their outline well past the default, and the
+   hovered one differs by a stronger fill.  The app does the same, at
+   fill-opacity 0.4 against 0.72 and stroke 1.8 against 2.4. */
+/* The field under the cursor is the containing block for the pointer and the
+   readout.  Losing this rule does not break anything visibly in CSS terms: the
+   two simply anchor to .rv-cite instead and land in the middle of the whole
+   reference list. */
 .rv-tok.hovered {
   position: relative;
 }
 
-.rv-tok.hovered .t {
-  border-width: 3px;
-  background: var(--c);
-  color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.25);
-}
+.rv-tok.peer .t { border-width: 5px; }
+
+.rv-tok.peer .t::before { opacity: 0.58; }
+
+.rv-tok.hovered .t { border-width: 5px; }
+
+.rv-tok.hovered .t::before { opacity: 0.85; }
 
 /* The pointer, so it reads as a field under the cursor rather than a field
    picked out for no reason.  The white outline is four hard drop-shadows, one
