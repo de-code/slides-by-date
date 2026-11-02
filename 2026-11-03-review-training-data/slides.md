@@ -9,7 +9,7 @@ paginate: true
 
 # Generated GROBID training data:<br>reviewing it on the page it came from
 
-Daniel Ecer &nbsp;·&nbsp; 20 October 2026
+Daniel Ecer &nbsp;·&nbsp; 3 November 2026
 
 <!--
 Lightning talk: 7 minutes + 3 minutes Q&A.
